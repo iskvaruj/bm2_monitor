@@ -32,7 +32,7 @@ while True:
     else:
         print("Connected!")
         break
-
+#extract Raw Rate
 def extractRate(rawRate):
     r1=rawRate[0:8]
     r2=[r1[i:i+2] for i in range(0, len(r1), 2)]
