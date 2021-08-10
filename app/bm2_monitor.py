@@ -68,6 +68,28 @@ def rawRate():
     print("RATE = %s" % str(rate))
 
 
+ #Send to ask volt
+def askVolt():
+    child.sendline("char-write-req" + "0x002b " + " " + "0106")
+    print ("... attempt char-write-req 0x002b 0106")
+
+    child.expect("Characteristic value was written successfully", timeout=5)
+    print ("... wrote characteristic value without timeout")
+
+    child.sendline("char-read-hnd " + "0x002A")
+    child.expect("Characteristic value/descriptor: ", timeout=5)
+
+    child.expect(" \r\n", timeout=1)
+    print ("... obtained read-hnd")
+    rawVolt = (child.before).decode('UTF-8').replace(" ", "")
+
+    #RETRIEVE THE RAW VOLT VALUE
+    print("RawVolt = %s " % rawVolt)
+    volt=extractVolt(rawRate.rate, rawVolt)
+    print("VOLT = %s" %str(volt))
+
+
+
 
 if __name__ == '__main__':
     rawRate()    
