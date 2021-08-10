@@ -92,4 +92,5 @@ def askVolt():
 
 
 if __name__ == '__main__':
-    rawRate()    
+    rawRate()
+    askVolt()    
