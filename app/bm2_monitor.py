@@ -40,7 +40,7 @@ def extractRate(rawRate):
     r3=r2[::-1]
     r4="".join(r3);
     r5=int(r4, 16)
-    #print(r5)
+    print(r5)
     return r5
 
 
